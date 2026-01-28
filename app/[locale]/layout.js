@@ -57,7 +57,6 @@ export async function generateMetadata({ params }) {
       apple: [{ url: "/apple-icon.png", type: "image/png" }],
     },
     manifest: "/manifest.json",
-    themeColor: "#ffffff",
   };
 }
 
