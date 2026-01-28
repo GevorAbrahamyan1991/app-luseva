@@ -1,20 +1,44 @@
 import { getMessages } from "@/i18n";
 import { locales } from "@/i18n/config";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Noto_Sans_Armenian,
+  Noto_Serif_Armenian,
+  Playfair_Display,
+  Roboto,
+} from "next/font/google";
 import "./globals.css";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// --- FONTS ---
+const playfair_display = Playfair_Display({
+  display: "swap",
   subsets: ["latin"],
+  variable: "--link-font",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const noto_serif_armenian = Noto_Serif_Armenian({
+  display: "swap",
   subsets: ["latin"],
+  variable: "--armenian-link-font",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const noto_sans_armenian = Noto_Sans_Armenian({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--armenian-text-font",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const roboto = Roboto({
+  display: "swap",
+  subsets: ["latin"],
+  variable: "--text-font",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 export async function generateMetadata({ params }) {
@@ -32,9 +56,9 @@ export default async function RootLayout({ children, params }) {
   const messages = await getMessages(locale);
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${playfair_display.variable} ${noto_sans_armenian.variable} ${noto_serif_armenian.variable} ${roboto.variable} antialiased`}
       >
         {children}
       </body>

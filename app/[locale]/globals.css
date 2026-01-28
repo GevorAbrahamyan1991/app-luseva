@@ -1,6 +1,45 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --text-link-response: 1.1vw;
+  --text-link-response-other: 1.3vw;
 }
+
+/* fonts */
+
+html:lang(en) .lang-based-font {
+  font-family: var(--roboto);
+}
+
+html:lang(en) .lang-based-font-link {
+  font-family: var(--link-font);
+  @apply lg:text-link-response-other text-xl;
+}
+html:lang(fr) .lang-based-font {
+  font-family: var(--roboto);
+}
+
+html:lang(fr) .lang-based-font-link {
+  font-family: var(--link-font);
+  @apply lg:text-link-response-other text-xl;
+}
+
+html:lang(ru) .lang-based-font {
+  font-family: var(--roboto);
+}
+
+html:lang(ru) .lang-based-font-link {
+  font-family: var(--link-font);
+  @apply lg:text-link-response-other text-xl;
+}
+
+html:lang(am) .lang-based-font {
+  font-family: var(--armenian-text-font);
+}
+
+html:lang(am) .lang-based-font-link {
+  font-family: var(--armenian-link-font);
+  @apply lg:text-link-response text-xl;
+}
+
+/* fonts end */
