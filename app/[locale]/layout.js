@@ -1,13 +1,21 @@
-import { getMessages } from "@/i18n";
-import { locales } from "@/i18n/config";
+// Packages
 import {
   Noto_Sans_Armenian,
   Noto_Serif_Armenian,
   Playfair_Display,
   Roboto,
 } from "next/font/google";
-import "./globals.css";
+
+// Components
+import Header from "@/components/layout/Header";
 import Providers from "./providers";
+
+// Multilanguage
+import { getMessages } from "@/i18n";
+import { locales } from "@/i18n/config";
+
+// Styles
+import "./globals.css";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -70,7 +78,13 @@ export default async function RootLayout({ children, params }) {
       <body
         className={`${playfair_display.variable} ${noto_sans_armenian.variable} ${noto_serif_armenian.variable} ${roboto.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header
+            messages={messages}
+            locale={locale}
+          />
+          {children}
+        </Providers>
       </body>
     </html>
   );
