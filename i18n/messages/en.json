@@ -8,7 +8,10 @@
   },
   "menu": {
     "home": "Home",
+    "about": "About Us",
+    "cakes": "Cakes",
     "contact": "Contact Us",
+    "faqs": "Questions",
     "service": "Services",
     "opinions": "Reviews",
     "features": "Why Choose Us"
