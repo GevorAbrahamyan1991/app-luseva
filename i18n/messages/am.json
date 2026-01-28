@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "",
+    "description": "",
+    "titleContact": "",
+    "descriptionContact": "",
+    "descriptionProducts": ""
+  },
+  "menu": {
+    "home": "Գլխավոր",
+    "contact": "Կապ Մեզ Հետ",
+    "service": "Ծառայություններ",
+    "opinions": "Կարծիքներ",
+    "features": "Ինչու Ընտրել Մեզ"
+  },
+  "buttons": {
+    "call_us_now": "Զանգահարեք մեզ",
+    "email_us_now": "Գրեք մեզ",
+    "view_more": "Տեսնել ավելին"
+  },
+  "sending": "Ուղարկվում է...",
+  "message_sent_success": "Ձեր հաղորդագրությունը հաջողությամբ ուղարկվեց",
+  "message_sent_error": "Ձեր հաղորդագրությունը չհաջողվեց ուղարկել",
+  "name": "Անուն",
+  "phone": "Հեռախոս",
+  "email": "Էլ. հասցե",
+  "message": "Նամակ",
+  "send": "Ուղարկել",
+  "similar": "Ձեզ կարող է դուր գալ"
+}

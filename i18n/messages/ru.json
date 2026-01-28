@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "",
+    "description": "",
+    "titleContact": "",
+    "descriptionContact": "",
+    "descriptionProducts": ""
+  },
+  "menu": {
+    "home": "Главная",
+    "contact": "Связаться с нами",
+    "service": "Услуги",
+    "opinions": "Отзывы",
+    "features": "Почему выбирают нас"
+  },
+  "buttons": {
+    "call_us_now": "Позвоните нам",
+    "email_us_now": "Напишите нам",
+    "view_more": "смотреть больше"
+  },
+  "sending": "Отправка...",
+  "message_sent_success": "Ваше сообщение успешно отправлено.",
+  "message_sent_error": "Не удалось отправить сообщение",
+  "name": "Имя",
+  "phone": "Телефон",
+  "email": "Эл. почта",
+  "message": "Сообщение",
+  "send": "Отправить",
+  "similar": "Вам может понравиться"
+}
