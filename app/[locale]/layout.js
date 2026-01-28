@@ -48,6 +48,16 @@ export async function generateMetadata({ params }) {
   return {
     title: messages.metadata.title,
     description: messages.metadata.description,
+    icons: {
+      icon: [
+        { url: "/favicon.ico", type: "image/x-icon" },
+        { url: "/icon0.svg", type: "image/svg+xml" },
+        { url: "/icon1.png", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-icon.png", type: "image/png" }],
+    },
+    manifest: "/manifest.json",
+    themeColor: "#ffffff",
   };
 }
 
