@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --text-link-response: 1.1vw;
-  --text-link-response-other: 1.3vw;
+  --text-link-response: 1.3vw;
+  --text-link-response-other: 1.6vw;
+
+  --color-theme-rose-pink: #ca7c83;
+  --color-theme-blush-pink: #eeb6bb;
+  --color-theme-pale-pink: #f9dadd;
+  --color-theme-lightest-rose: #fcf1f2;
+  --color-theme-pinkish-white: #fefdfe;
+  --color-theme-light-gray: #d9d9d9;
+  --color-theme-dark-gray: #adadad;
 }
 
 /* fonts */
@@ -12,14 +20,6 @@ html:lang(en) .lang-based-font {
 }
 
 html:lang(en) .lang-based-font-link {
-  font-family: var(--link-font);
-  @apply lg:text-link-response-other text-xl;
-}
-html:lang(fr) .lang-based-font {
-  font-family: var(--roboto);
-}
-
-html:lang(fr) .lang-based-font-link {
   font-family: var(--link-font);
   @apply lg:text-link-response-other text-xl;
 }
