@@ -7,6 +7,7 @@ import {
   Roboto,
 } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -69,7 +70,7 @@ export default async function RootLayout({ children, params }) {
       <body
         className={`${playfair_display.variable} ${noto_sans_armenian.variable} ${noto_serif_armenian.variable} ${roboto.variable} antialiased`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
