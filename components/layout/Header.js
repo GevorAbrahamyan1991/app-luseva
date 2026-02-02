@@ -51,28 +51,28 @@ export default function Header({ messages, locale }) {
 
   const socialIcons = () => (
     <div className="flex gap-2">
-      <PiInstagramLogo className="cursor-pointer text-xl sm:text-2xl" />
-      <PiFacebookLogo className="cursor-pointer text-xl sm:text-2xl" />
-      <PiPhone className="cursor-pointer text-xl sm:text-2xl" />
-      <PiWhatsappLogo className="cursor-pointer text-xl sm:text-2xl" />
-      <PiHeart className="cursor-pointer text-xl sm:text-2xl" />
-      <PiGlobe className="cursor-pointer text-xl sm:text-2xl" />
+      <PiInstagramLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <PiFacebookLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <PiPhone className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <PiWhatsappLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <PiHeart className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <PiGlobe className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
     </div>
   );
 
   return (
     <>
       <Container
-        boxTheme="max-lg:hidden overflow-hidden"
-        theme="flex items-center py-4"
+        boxTheme="max-lg:hidden overflow-hidden bg-theme-dark-gray"
+        theme="flex items-center py-3"
       >
         <div className="w-1/6">
           <Link href="/">
             <Image
-              src="/logo.webp"
+              src="/logo-removebg-preview.png"
               alt="Logo"
-              width={160}
-              height={100}
+              width={120}
+              height={60}
               priority
             />
           </Link>
@@ -82,7 +82,7 @@ export default function Header({ messages, locale }) {
             <Link
               key={index}
               href={item.href}
-              className="lang-based-font-link text-theme-rose-pink hover:text-theme-dark-gray after:bg-theme-dark-gray relative transition-all duration-300 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+              className="lang-based-font-link text-theme-pinkish-white hover:text-theme-rose-pink after:bg-theme-dark-gray relative transition-all duration-300 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 hover:after:w-full"
             >
               {item.label}
             </Link>
@@ -90,14 +90,11 @@ export default function Header({ messages, locale }) {
         </div>
         <div className="flex w-1/6 justify-end gap-2">{socialIcons()}</div>
       </Container>
-      <Container
-        boxTheme="lg:hidden"
-        theme="py-4"
-      >
+      <Container boxTheme="lg:hidden bg-theme-dark-gray" theme="py-4">
         <div className="flex items-center justify-between">
           <Link href="/">
             <Image
-              src="/logo.webp"
+              src="/logo-removebg-preview.png"
               alt="Logo"
               width={80}
               height={60}
@@ -107,20 +104,22 @@ export default function Header({ messages, locale }) {
           <div>{socialIcons()}</div>
           <button>
             <PiList
-              className="cursor-pointer text-xl sm:text-2xl"
+              className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white"
               onClick={() => setOpen(!open)}
             />
           </button>
         </div>
         <div
-          className={`${open ? "h-72" : "h-0"} flex flex-col justify-center space-y-3 overflow-hidden transition-all duration-300`}
+          className={`${
+            open ? "h-72" : "h-0"
+          } flex flex-col justify-center space-y-3 overflow-hidden transition-all duration-300`}
         >
           {routes.map((item, index) => {
             return (
               <Link
                 href={item.href}
                 key={index}
-                className="lang-based-font-link"
+                className="lang-based-font-link text-theme-pinkish-white"
               >
                 {item.label}
               </Link>
