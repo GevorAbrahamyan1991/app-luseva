@@ -5,6 +5,7 @@ import Herro from "@/components/sections/Herro";
 import Features from "@/components/sections/Features";
 import AboutUI from "@/components/sections/AboutUI";
 import CategoryUI from "@/components/sections/CategoryUI";
+import AnswersUI from "@/components/sections/AnswersUI";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -20,6 +21,7 @@ export default async function Home({ params }) {
       <Features locale={locale} messages={messages} />
       <AboutUI locale={locale} messages={messages} path="home" />
       <CategoryUI locale={locale} messages={messages} path="home" />
+      <AnswersUI locale={locale} messages={messages} path="home" />
     </>
   );
 }
