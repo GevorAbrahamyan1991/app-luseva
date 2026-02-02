@@ -14,7 +14,8 @@
     "faqs": "Questions",
     "service": "Services",
     "opinions": "Reviews",
-    "features": "Why Choose Us"
+    "features": "Why Choose Us",
+    "category": "Choose Category"
   },
   "buttons": {
     "call_us_now": "Call Us",
