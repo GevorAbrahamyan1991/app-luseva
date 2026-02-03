@@ -17,6 +17,7 @@ import {
 
 // Components
 import Container from "../Container";
+import { LanguageSwitcher } from "../LanguageSwitcher";
 
 export default function Header({ messages, locale }) {
   const t = getTranslations(messages);
@@ -67,14 +68,14 @@ export default function Header({ messages, locale }) {
         <PiHeart className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
       </Link>
 
-      <PiGlobe className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+      <LanguageSwitcher currentLocale={locale} />
     </div>
   );
 
   return (
     <>
       <Container
-        boxTheme="max-lg:hidden overflow-hidden bg-theme-dark-gray"
+        boxTheme="max-lg:hidden  bg-theme-dark-gray"
         theme="flex items-center py-3"
       >
         <div className="w-1/6">
