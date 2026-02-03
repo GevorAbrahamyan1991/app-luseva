@@ -1,42 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import Container from "../Container";
 import Title from "../Title";
 import Description from "../Description";
 import Link from "next/link";
+import Loader from "../Loader";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function Herro({ locale, messages }) {
+  const { data, isLoading } = useFetchData({ endpoint: "herro" });
+
+  if (isLoading) {
+    return <Loader messages={messages} />;
+  }
+
+  if (!data) {
+    return null;
+  }
+
   return (
-    <Container boxTheme="xl:h-[calc(100vh-76px)] max-xl:py-12 bg-theme-pale-pink py-8">
+    <Container boxTheme="xl:h-[calc(100vh-76px)] max-xl:py-12 bg-theme-pale-pink flex items-center">
       <div className="flex max-xl:flex-col justify-between items-center gap-8">
         <div className="w-full xl:w-1/2 xl:h-[calc(100vh-180px)] flex flex-col max-xl:gap-y-8 justify-between">
           <div className="bg-theme-blush-pink rounded-lg w-full px-2 py-4">
-            <Title as={"h1"} theme="text-center">
-              Արվեստ, որը կարելի է համտեսել
+            <Title as={"h1"} theme="text-center font-bold tracking-widest">
+              {messages.metadata.slogan}
             </Title>
           </div>
           <div>
-            <Description theme="text-black text-xl">
-              <ul>
-                <li>Հեղինակային դիզայն</li>
-                <li>Հարսանեկան տորթեր</li>
-                <li>Մանկական և տոնական</li>
-                <li>Կորպորատիվ պատվերներ</li>
-                <li>Անհատական մոտեցում</li>
-                <li>Անվտանգ առաքում</li>
-              </ul>
-              <div className="text-base mt-8">
-                Մենք հանդիսանում ենք բացառապես տորթերի պատրաստման և դիզայնի
-                մասնագիտացված հարթակ Հայաստանում։ Մեր պրոֆեսիոնալ մոտեցումը և
-                ստեղծագործ թիմը թույլ են տալիս ապահովել տոնական տորթերի
-                անհավանական տեսականի՝ օգտագործելով միայն թարմ և բարձրակարգ
-                բաղադրիչներ։ Մենք առաջարկում ենք գեղագիտական և համային բացառիկ
-                լուծումներ Ձեր կյանքի կարևորագույն իրադարձությունների համար՝
-                սկսած նրբագեղ հարսանեկան ձևավորումներից մինչև վառ մանկական
-                երևակայություններ։ LusEva Cakes-ը երաշխավորում է որակ,
-                ճշգրտություն և անմոռանալի քաղցրություն՝ բավարարելով մեր
-                հաճախորդների ամենաբարձր և նրբաճաշակ պահանջները։
-              </div>
-            </Description>
+            <Description
+              theme="text-black text-xl  tracking-widest lang-based-font-link"
+              dangerousContent={{ __html: data[`title_${locale}`] }}
+            />
+          </div>
+          <div>
+            <Description
+              theme="text-xl"
+              dangerousContent={{ __html: data[`description_${locale}`] }}
+            />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
             <Link

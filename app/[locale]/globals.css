@@ -16,7 +16,7 @@
 /* fonts */
 
 html:lang(en) .lang-based-font {
-  font-family: var(--roboto);
+  font-family: var(--text-font);
 }
 
 html:lang(en) .lang-based-font-link {
@@ -25,7 +25,7 @@ html:lang(en) .lang-based-font-link {
 }
 
 html:lang(ru) .lang-based-font {
-  font-family: var(--roboto);
+  font-family: var(--text-font);
 }
 
 html:lang(ru) .lang-based-font-link {

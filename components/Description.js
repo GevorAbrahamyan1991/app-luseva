@@ -9,7 +9,7 @@ export default function Description({
       {dangerousContent ? (
         <div
           title={keys}
-          className={`${theme} lang-based-font`}
+          className={`${theme}  lang-based-font`}
           dangerouslySetInnerHTML={dangerousContent}
         />
       ) : (

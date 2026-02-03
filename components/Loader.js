@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 
 export default function Loader({ messages }) {
+  console.log("mmm", messages);
+
   const text = `${messages.metadata.title}`;
   const letters = Array.from(text);
 
