@@ -6,8 +6,15 @@ import Title from "../Title";
 import { data } from "@/data/remove/why";
 import Description from "../Description";
 import { motion } from "framer-motion";
+import useFetchData from "@/hooks/useFetchData";
 
 export default function Features({ locale, messages }) {
+  const { data } = useFetchData({ endpoint: "features" });
+
+  if (!data) {
+    return null;
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,11 +69,15 @@ export default function Features({ locale, messages }) {
                   <PiCheck size={30} />
                 </div>
                 <div>
-                  <Title>{item.title}</Title>
+                  <Title theme="lg:!text-xl" keys={item[`title_${locale}`]}>
+                    {item[`title_${locale}`]}
+                  </Title>
                 </div>
               </div>
               <div>
-                <Description>{item.description}</Description>
+                <Description
+                  dangerousContent={{ __html: item[`description_${locale}`] }}
+                />
               </div>
             </motion.div>
           );
