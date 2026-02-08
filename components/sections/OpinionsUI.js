@@ -33,7 +33,7 @@ export default function OpinionsUI({ locale, messages, path }) {
 
       {path === "home" && (
         <SliderUI
-          data={data}
+          data={data.slice(0, 20)}
           locale={locale}
           messages={messages}
           type="opinion"
