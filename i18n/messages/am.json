@@ -16,7 +16,9 @@
     "service": "Ծառայություններ",
     "opinions": "Կարծիքներ",
     "features": "Ինչու Ընտրել Մեզ",
-    "category": "Ընտրեք բաժինը"
+    "categories": "Բաժիններ",
+    "category": "Ընտրեք բաժինը",
+    "best_sellers": "Շատ Վաճառվածներ"
   },
   "buttons": {
     "call_us_now": "Զանգահարեք մեզ",

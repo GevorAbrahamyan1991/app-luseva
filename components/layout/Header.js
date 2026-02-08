@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useState } from "react";
 import {
   PiFacebookLogo,
-  PiGlobe,
   PiHeart,
   PiInstagramLogo,
   PiList,
@@ -33,6 +32,10 @@ export default function Header({ messages, locale }) {
       href: "/about-us",
     },
     {
+      label: t("menu.categories"),
+      href: "/category",
+    },
+    {
       label: t("menu.cakes"),
       href: "/cakes",
     },
@@ -53,19 +56,19 @@ export default function Header({ messages, locale }) {
   const socialIcons = () => (
     <div className="flex gap-2">
       <Link href="">
-        <PiInstagramLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+        <PiInstagramLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
       </Link>
       <Link href="">
-        <PiFacebookLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+        <PiFacebookLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
       </Link>
       <Link href="">
-        <PiPhone className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+        <PiPhone className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
       </Link>
       <Link href="">
-        <PiWhatsappLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+        <PiWhatsappLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
       </Link>
       <Link href="">
-        <PiHeart className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+        <PiHeart className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
       </Link>
 
       <LanguageSwitcher currentLocale={locale} />
@@ -75,7 +78,7 @@ export default function Header({ messages, locale }) {
   return (
     <>
       <Container
-        boxTheme="max-lg:hidden  bg-theme-dark-gray"
+        boxTheme="max-xl:hidden  bg-theme-dark-gray"
         theme="flex items-center py-3"
       >
         <div className="w-1/6">
@@ -102,7 +105,10 @@ export default function Header({ messages, locale }) {
         </div>
         <div className="flex w-1/6 justify-end gap-2">{socialIcons()}</div>
       </Container>
-      <Container boxTheme="lg:hidden bg-theme-dark-gray" theme="py-4">
+      <Container
+        boxTheme="xl:hidden bg-theme-dark-gray"
+        theme="py-4"
+      >
         <div className="flex items-center justify-between">
           <Link href="/">
             <Image
@@ -116,7 +122,7 @@ export default function Header({ messages, locale }) {
           <div>{socialIcons()}</div>
           <button>
             <PiList
-              className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white"
+              className="text-theme-pinkish-white cursor-pointer text-xl sm:text-2xl"
               onClick={() => setOpen(!open)}
             />
           </button>

@@ -43,3 +43,7 @@ html:lang(am) .lang-based-font-link {
 }
 
 /* fonts end */
+
+.swiper-pagination-bullet {
+  @apply !bg-theme-dark-gray;
+}

@@ -16,7 +16,9 @@
     "service": "Услуги",
     "opinions": "Отзывы",
     "features": "Почему выбирают нас",
-    "category": "Выберите категорию"
+    "categories": "Разделы",
+    "category": "Выберите категорию",
+    "best_sellers": "Бестселлеры"
   },
   "buttons": {
     "call_us_now": "Позвоните нам",
