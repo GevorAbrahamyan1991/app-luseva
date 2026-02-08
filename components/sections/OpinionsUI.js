@@ -10,15 +10,15 @@ import useFetchData from "@/hooks/useFetchData";
 import Link from "next/link";
 import SliderUI from "../SliderUI";
 
-export default function BestUI({ locale, messages, path }) {
-  const { data } = useFetchData({ endpoint: "best-sellers" });
+export default function OpinionsUI({ locale, messages, path }) {
+  const { data } = useFetchData({ endpoint: "opinions" });
 
   if (!data) {
     return null;
   }
 
   return (
-    <Container boxTheme="py-12 bg-theme-rose-pink">
+    <Container boxTheme="py-12 bg-theme-pale-pink">
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -27,22 +27,22 @@ export default function BestUI({ locale, messages, path }) {
         className="mb-12 text-center"
       >
         <Title theme="text-center bg-theme-dark-gray py-4 rounded-lg">
-          {messages.menu.best_sellers}
+          {messages.menu.opinions}
         </Title>
       </motion.div>
 
       {path === "home" && (
         <SliderUI
-          data={data.data}
+          data={data}
           locale={locale}
           messages={messages}
-          type="product"
+          type="opinion"
         />
       )}
 
       {path === "home" && (
         <Link
-          href="/best-sellers"
+          href="/opinions"
           className="bg-theme-dark-gray mt-12 block w-full rounded-lg py-4 text-center capitalize"
         >
           <Title>{messages.buttons.see_all}</Title>

@@ -56,20 +56,20 @@ export default function SliderUI({ data, locale, messages, type }) {
                   />
                 )}
                 {type === "opinion" && (
-                  <div className="bg-midnight-blue h-80 rounded-lg p-4">
+                  <div className="bg-theme-light-gray h-48 rounded-lg p-4">
                     <div>
                       <Title
-                        theme="text-text-light mb-2"
+                        theme="text-theme-rose-pink mb-2"
                         keys={item[`title_${locale}`]}
                       >
                         {item[`title_${locale}`]}
                       </Title>
                       <div className="flex items-center gap-1">
-                        <PiStarFill className="text-text-red" />
-                        <PiStarFill className="text-text-red" />
-                        <PiStarFill className="text-text-red" />
-                        <PiStarFill className="text-text-red" />
-                        <PiStarFill className="text-text-red" />
+                        <PiStarFill className="text-theme-rose-pink" />
+                        <PiStarFill className="text-theme-rose-pink" />
+                        <PiStarFill className="text-theme-rose-pink" />
+                        <PiStarFill className="text-theme-rose-pink" />
+                        <PiStarFill className="text-theme-rose-pink" />
                       </div>
                       <Description
                         dangerousContent={{ __html: desc }}
