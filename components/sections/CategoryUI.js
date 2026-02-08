@@ -1,12 +1,24 @@
 "use client";
 
-import Image from "next/image";
-import Container from "../Container";
-import Title from "../Title";
+import useFetchData from "@/hooks/useFetchData";
 import { motion } from "framer-motion";
-import { data } from "@/data/remove/category";
+import Image from "next/image";
+import Link from "next/link";
+import Container from "../Container";
+import Loader from "../Loader";
+import Title from "../Title";
 
 export default function CategoryUI({ path, locale, messages }) {
+  const { data, isLoading } = useFetchData({ endpoint: "category" });
+
+  if (!data) {
+    return null;
+  }
+
+  if (isLoading && path !== "home") {
+    return <Loader />;
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,31 +57,43 @@ export default function CategoryUI({ path, locale, messages }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
       >
-        {data.map((item, index) => {
+        {(path === "home" ? data.slice(0, 6) : data).map((item, index) => {
           return (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -5 }}
+              className="cursor-pointer"
             >
-              <div className="h-96 rounded-t-lg overflow-hidden">
-                <Image
-                  src={item.image}
-                  width={item.width}
-                  height={item.height}
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <Title theme="text-center bg-theme-dark-gray py-4 rounded-b-lg">
-                {item.label}
-              </Title>
+              <Link href={`/category/${item.slug}`}>
+                <div className="h-96 overflow-hidden rounded-t-lg">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_URL}uploads/${item.cover_image}`}
+                    width={500}
+                    height={500}
+                    alt={item.category_en}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <Title theme="text-center bg-theme-dark-gray py-4 rounded-b-lg">
+                  {item[`category_${locale}`]}
+                </Title>
+              </Link>
             </motion.div>
           );
         })}
       </motion.div>
+
+      {path === "home" && (
+        <Link
+          href="/category"
+          className="bg-theme-dark-gray mt-12 block w-full rounded-lg py-4 text-center capitalize"
+        >
+          <Title>{messages.buttons.see_all}</Title>
+        </Link>
+      )}
     </Container>
   );
 }

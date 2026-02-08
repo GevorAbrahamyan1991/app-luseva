@@ -1,18 +1,31 @@
 "use client";
 
+import useFetchData from "@/hooks/useFetchData";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import Container from "../Container";
-import Title from "../Title";
-import Description from "../Description";
 import Link from "next/link";
 import {
   PiFacebookLogo,
   PiInstagramLogo,
   PiWhatsappLogo,
 } from "react-icons/pi";
-import { motion } from "framer-motion";
+import Container from "../Container";
+import Description from "../Description";
+import Loader from "../Loader";
+import Title from "../Title";
 
 export default function AboutUI({ path, locale, messages }) {
+  const { data } = useFetchData({ endpoint: "about-home" });
+  const { data: data2, isLoading } = useFetchData({ endpoint: "about" });
+
+  if (path !== "home" && isLoading) {
+    return <Loader />;
+  }
+
+  if (!data && !data2) {
+    return null;
+  }
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,7 +67,7 @@ export default function AboutUI({ path, locale, messages }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1.8 }}
-        className="text-center mb-12"
+        className="mb-12 text-center"
       >
         <Title theme="text-center bg-theme-dark-gray py-4 rounded-lg">
           {messages.menu.about}
@@ -68,13 +81,13 @@ export default function AboutUI({ path, locale, messages }) {
           viewport={{ once: true }}
           className=""
         >
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
             <motion.div
-              className="rounded-lg overflow-hidden h-fit"
+              className="h-fit overflow-hidden rounded-lg"
               variants={imageVariants}
             >
               <Image
-                src="/remove/about.png"
+                src={`${process.env.NEXT_PUBLIC_URL}uploads/${data.cover_image}`}
                 width={500}
                 height={500}
                 alt="Herro"
@@ -85,52 +98,43 @@ export default function AboutUI({ path, locale, messages }) {
               variants={contentVariants}
               className="flex flex-col justify-between gap-4"
             >
-              <Description>
-                Մենք հանդիսանում ենք բացառապես տորթերի պատրաստման և դիզայնի
-                մասնագիտացված հարթակ Հայաստանում։ Մեր պրոֆեսիոնալ մոտեցումը և
-                ստեղծագործ թիմը թույլ են տալիս ապահովել տոնական տորթերի
-                անհավանական տեսականի՝ օգտագործելով միայն թարմ և բարձրակարգ
-                բաղադրիչներ։ Մենք առաջարկում ենք գեղագիտական և համային բացառիկ
-                լուծումներ Ձեր կյանքի կարևորագույն իրադարձությունների համար՝
-                սկսած նրբագեղ հարսանեկան ձևավորումներից մինչև վառ մանկական
-                երևակայություններ։ LusEva Cakes-ը երաշխավորում է որակ,
-                ճշգրտություն և անմոռանալի քաղցրություն՝ բավարարելով մեր
-                հաճախորդների ամենաբարձր և նրբաճաշակ պահանջները։
-              </Description>
+              <Description
+                dangerousContent={{ __html: data[`description_${locale}`] }}
+              />
               <div>
                 <Title>{messages.buttons.find_us}</Title>
-                <div className="flex gap-4 mt-4">
+                <div className="mt-4 flex gap-4">
                   <Link
                     href=""
-                    className="bg-theme-blush-pink hover:bg-theme-dark-gray p-4 rounded-lg transition-all duration-300"
+                    className="bg-theme-blush-pink hover:bg-theme-dark-gray rounded-lg p-4 transition-all duration-300"
                   >
-                    <PiInstagramLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+                    <PiInstagramLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
                   </Link>
                   <Link
                     href=""
-                    className="bg-theme-blush-pink hover:bg-theme-dark-gray p-4 rounded-lg transition-all duration-300"
+                    className="bg-theme-blush-pink hover:bg-theme-dark-gray rounded-lg p-4 transition-all duration-300"
                   >
-                    <PiFacebookLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+                    <PiFacebookLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
                   </Link>
 
                   <Link
                     href=""
-                    className="bg-theme-blush-pink hover:bg-theme-dark-gray p-4 rounded-lg transition-all duration-300"
+                    className="bg-theme-blush-pink hover:bg-theme-dark-gray rounded-lg p-4 transition-all duration-300"
                   >
-                    <PiWhatsappLogo className="cursor-pointer text-xl sm:text-2xl text-theme-pinkish-white hover:text-theme-rose-pink transition-all duration-300" />
+                    <PiWhatsappLogo className="text-theme-pinkish-white hover:text-theme-rose-pink cursor-pointer text-xl transition-all duration-300 sm:text-2xl" />
                   </Link>
                 </div>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
                 <Link
                   href=""
-                  className="bg-theme-blush-pink hover:bg-theme-dark-gray transition-all duration-300 rounded-lg py-2 text-center"
+                  className="bg-theme-blush-pink hover:bg-theme-dark-gray rounded-lg py-2 text-center transition-all duration-300"
                 >
                   <Title>{messages.buttons.call_us_now}</Title>
                 </Link>
                 <Link
                   href=""
-                  className="bg-theme-blush-pink hover:bg-theme-dark-gray transition-all duration-300 rounded-lg py-2 text-center"
+                  className="bg-theme-blush-pink hover:bg-theme-dark-gray rounded-lg py-2 text-center transition-all duration-300"
                 >
                   <Title>{messages.buttons.email_us_now}</Title>
                 </Link>

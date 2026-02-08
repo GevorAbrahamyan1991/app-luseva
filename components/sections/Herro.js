@@ -60,7 +60,7 @@ export default function Herro({ locale, messages }) {
         </div>
         <div className="w-full overflow-hidden rounded-lg xl:h-[calc(100vh-180px)] xl:w-1/2">
           <Image
-            src="/remove/herro.png"
+            src={`${process.env.NEXT_PUBLIC_URL}uploads/${data.cover_image}`}
             width={500}
             height={500}
             alt="Herro"

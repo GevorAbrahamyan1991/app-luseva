@@ -22,7 +22,8 @@
     "call_us_now": "Call Us",
     "email_us_now": "Email Us",
     "view_more": "View More",
-    "find_us": "Find Us Here"
+    "find_us": "Find Us Here",
+    "see_all": "See All"
   },
   "sending": "Sending...",
   "message_sent_success": "Your message has been sent successfully.",

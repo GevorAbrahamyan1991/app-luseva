@@ -1,22 +1,28 @@
 "use client";
 
 // Packages
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { getTranslations } from "@/i18n";
-import { PiPlusBold, PiMinusBold } from "react-icons/pi";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { PiMinusBold, PiPlusBold } from "react-icons/pi";
 
 // Components
 import Container from "@/components/Container";
-import Title from "../Title";
 import Description from "../Description";
+import Title from "../Title";
 
 // Data
-import { faqServices } from "@/data/remove/answers";
+import useFetchData from "@/hooks/useFetchData";
+import Link from "next/link";
 
 export default function AnswersUI({ locale, messages, path }) {
   const t = getTranslations(messages);
   const [expandedId, setExpandedId] = useState(null);
+  const { data } = useFetchData({ endpoint: "faqs" });
+
+  if (!data) {
+    return null;
+  }
 
   const toggleAccordion = (id) => {
     setExpandedId(expandedId === id ? null : id);
@@ -45,13 +51,16 @@ export default function AnswersUI({ locale, messages, path }) {
   };
 
   return (
-    <Container boxTheme="py-12 bg-theme-blush-pink" theme="flex-col">
+    <Container
+      boxTheme="py-12 bg-theme-blush-pink"
+      theme="flex-col"
+    >
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12"
+        className="mb-12 text-center"
       >
         <Title theme="bg-theme-dark-gray py-4 rounded-lg  text-center">
           {t("menu.faqs")}
@@ -63,22 +72,22 @@ export default function AnswersUI({ locale, messages, path }) {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className=" mx-auto w-full space-y-4"
+        className="mx-auto w-full space-y-4"
       >
-        {faqServices.map((item) => (
+        {(path === "home" ? data.data.slice(0, 10) : data.data).map((item) => (
           <motion.div
             key={item.id}
             variants={itemVariants}
-            className="rounded-lg overflow-hidden  bg-theme-dark-gray transition-all duration-300"
+            className="bg-theme-dark-gray overflow-hidden rounded-lg transition-all duration-300"
           >
             <button
               onClick={() => toggleAccordion(item.id)}
-              className="w-full flex justify-between items-center p-6 text-left focus:outline-none group cursor-pointer"
+              className="group flex w-full cursor-pointer items-center justify-between p-6 text-left focus:outline-none"
             >
               <Title theme="pr-8 text-theme-pinkish-white">
-                {item.question[locale]}
+                {item[`title_${locale}`]}
               </Title>
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-theme-bg-dark flex items-center justify-center text-theme-pinkish-white group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-theme-bg-dark text-theme-pinkish-white flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:scale-110">
                 {expandedId === item.id ? (
                   <PiMinusBold size={20} />
                 ) : (
@@ -95,9 +104,9 @@ export default function AnswersUI({ locale, messages, path }) {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <div className="px-6 pb-6 pt-2 border-t border-white/5">
+                  <div className="border-t border-white/5 px-6 pt-2 pb-6">
                     <Description theme="text-theme-pinkish-white leading-relaxed">
-                      {item.answer[locale]}
+                      {item[`description_${locale}`]}
                     </Description>
                   </div>
                 </motion.div>
@@ -106,6 +115,14 @@ export default function AnswersUI({ locale, messages, path }) {
           </motion.div>
         ))}
       </motion.div>
+      {path === "home" && (
+        <Link
+          href="/questions"
+          className="bg-theme-dark-gray mt-12 block w-full rounded-lg py-4 text-center capitalize"
+        >
+          <Title>{messages.buttons.see_all}</Title>
+        </Link>
+      )}
     </Container>
   );
 }
