@@ -18,7 +18,7 @@ export default function OpinionsUI({ locale, messages, path }) {
   }
 
   return (
-    <Container boxTheme="py-12 bg-theme-pale-pink">
+    <Container boxTheme="py-12 bg-theme-blush-pink">
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}

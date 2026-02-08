@@ -21,7 +21,7 @@ export default function BlogsUI({ locale, messages, path }) {
   }
 
   return (
-    <Container boxTheme="bg-theme-blush-pink py-12">
+    <Container boxTheme="bg-theme-pale-pink py-12">
       <motion.div
         initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}

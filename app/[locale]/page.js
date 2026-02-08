@@ -48,13 +48,12 @@ export default async function Home({ params }) {
         messages={messages}
         path="home"
       />
-      <OpinionsUI
+      <BlogsUI
         locale={locale}
         messages={messages}
         path="home"
       />
-
-      <BlogsUI
+      <OpinionsUI
         locale={locale}
         messages={messages}
         path="home"
