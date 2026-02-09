@@ -19,7 +19,8 @@
     "categories": "Sections",
     "category": "Choose Category",
     "best_sellers": "Best Sellers",
-    "blogs": "Sweet Stories"
+    "blogs": "Sweet Stories",
+    "news": "News"
   },
   "buttons": {
     "call_us_now": "Call Us",
@@ -36,5 +37,6 @@
   "email": "Email",
   "message": "Message",
   "send": "Send",
-  "similar": "You May Also Like"
+  "similar": "You May Also Like",
+  "pages": "Pages"
 }

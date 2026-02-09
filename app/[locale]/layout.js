@@ -15,8 +15,8 @@ import { getMessages } from "@/i18n";
 import { locales } from "@/i18n/config";
 
 // Styles
-import "./globals.css";
 import Footer from "@/components/layout/Footer";
+import "./globals.css";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -80,9 +80,15 @@ export default async function RootLayout({ children, params }) {
         className={`${playfair_display.variable} ${noto_sans_armenian.variable} ${noto_serif_armenian.variable} ${roboto.variable} antialiased`}
       >
         <Providers>
-          <Header messages={messages} locale={locale} />
+          <Header
+            messages={messages}
+            locale={locale}
+          />
           {children}
-          <Footer />
+          <Footer
+            messages={messages}
+            locale={locale}
+          />
         </Providers>
       </body>
     </html>
