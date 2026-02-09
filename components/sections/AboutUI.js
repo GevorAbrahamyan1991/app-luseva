@@ -113,7 +113,11 @@ export default function AboutUI({ path, locale, messages }) {
             >
               <motion.div
                 className="overflow-hidden"
-                variants={contentVariants}
+                // variants={contentVariants}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8 }}
               >
                 <Description
                   theme="text-lg [&_h2]:text-theme-pinkish-white text-theme-light-gray"
@@ -123,7 +127,10 @@ export default function AboutUI({ path, locale, messages }) {
               {data2.video && (
                 <motion.div
                   className="mt-12 overflow-hidden rounded-lg"
-                  variants={imageVariants}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8 }}
                 >
                   <ReactPlayer
                     controls
@@ -134,12 +141,18 @@ export default function AboutUI({ path, locale, messages }) {
               )}
 
               {GalleryImages.length > 0 && (
-                <div className="mt-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.8 }}
+                  className="mt-12"
+                >
                   <GalleryGrid
                     data={GalleryImages}
                     currentCss="grid cursor-pointer grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-8 md:grid-cols-4"
                   />
-                </div>
+                </motion.div>
               )}
             </motion.div>
           </>
