@@ -12,8 +12,9 @@ import SliderUI from "../SliderUI";
 
 export default function OpinionsUI({ locale, messages, path }) {
   const { data } = useFetchData({ endpoint: "opinions" });
+  const { data: data1 } = useFetchData({ endpoint: "opinions-best" });
 
-  if (!data) {
+  if (!data || !data1) {
     return null;
   }
 
@@ -33,7 +34,7 @@ export default function OpinionsUI({ locale, messages, path }) {
 
       {path === "home" && (
         <SliderUI
-          data={data.slice(0, 20)}
+          data={data1}
           locale={locale}
           messages={messages}
           type="opinion"
