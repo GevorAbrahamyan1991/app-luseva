@@ -5,8 +5,8 @@ export async function generateMetadata({ params }) {
   const messages = await getMessages(locale);
 
   return {
-    title: messages.metadata.titleContact,
-    description: messages.metadata.descriptionContact,
+    title: messages.metadata.titleAbout,
+    description: messages.metadata.descriptionAbout,
   };
 }
 

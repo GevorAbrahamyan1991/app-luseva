@@ -54,10 +54,36 @@ const roboto = Roboto({
 export async function generateMetadata({ params }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
+  const baseUrl = "https://lusevackaes.am";
 
   return {
-    title: messages.metadata.title,
+    metadataBase: new URL(baseUrl),
+    title: {
+      default: messages.metadata.title,
+      template: `%s | ${messages.metadata.title}`,
+    },
     description: messages.metadata.description,
+    openGraph: {
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+      url: baseUrl,
+      siteName: messages.metadata.title,
+      locale: locale,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: messages.metadata.title,
+      description: messages.metadata.description,
+    },
+    alternates: {
+      canonical: "./",
+      languages: {
+        en: "/en",
+        ru: "/ru",
+        am: "/am",
+      },
+    },
     icons: {
       icon: [
         { url: "/favicon.ico", type: "image/x-icon" },
@@ -73,7 +99,6 @@ export async function generateMetadata({ params }) {
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
   const messages = await getMessages(locale);
-
   return (
     <html lang={locale}>
       <body
