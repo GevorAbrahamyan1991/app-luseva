@@ -99,7 +99,7 @@ export default function Footer({ messages, locale }) {
           </div>
         </div>
       </div>
-      <div className="bg-theme-rose-pink mt-8 rounded-lg py-4 text-center">
+      <div className="bg-theme-rose-pink mt-8 rounded-lg p-4 text-center">
         <Title theme="text-sm!">
           © 2012–2026 · <a href="gevorgabrahamyan.com">Gevorg Abrahamyan</a> ·
           All Rights Reserved

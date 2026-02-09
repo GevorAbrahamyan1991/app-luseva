@@ -121,7 +121,7 @@ export default function ContactUI({ path, locale, messages }) {
         className="bg-theme-dark-gray mt-12 grid grid-cols-1 gap-8 rounded-lg p-4 sm:p-8 lg:grid-cols-2"
       >
         <motion.div
-          className="flex h-fit flex-col justify-between gap-y-8"
+          className="flex h-full flex-col justify-between gap-y-8"
           variants={imageVariants}
         >
           <Title theme="text-base! bg-theme-blush-pink! p-4 rounded-lg">
@@ -187,6 +187,7 @@ export default function ContactUI({ path, locale, messages }) {
                 <div className="bg-theme-blush-pink hover:bg-theme-rose-pink hover:text-theme-dark-gray flex w-full items-center gap-x-4 rounded-lg p-4 transition-all duration-300">
                   <PiClock size={28} />
                   <Description
+                    theme="font-semibold"
                     dangerousContent={{
                       __html: data[`working_hours_${locale}`],
                     }}
@@ -200,7 +201,7 @@ export default function ContactUI({ path, locale, messages }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex items-center gap-4"
+            className="flex items-center gap-2 sm:gap-4"
           >
             {data.instagram && (
               <Link
