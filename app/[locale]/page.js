@@ -6,6 +6,7 @@ import AnswersUI from "@/components/sections/AnswersUI";
 import BestUI from "@/components/sections/BestUI";
 import BlogsUI from "@/components/sections/BlogsUI";
 import CategoryUI from "@/components/sections/CategoryUI";
+import ContactUI from "@/components/sections/ContactUI";
 import Features from "@/components/sections/Features";
 import Herro from "@/components/sections/Herro";
 import OpinionsUI from "@/components/sections/OpinionsUI";
@@ -54,6 +55,11 @@ export default async function Home({ params }) {
         path="home"
       />
       <OpinionsUI
+        locale={locale}
+        messages={messages}
+        path="home"
+      />
+      <ContactUI
         locale={locale}
         messages={messages}
         path="home"
